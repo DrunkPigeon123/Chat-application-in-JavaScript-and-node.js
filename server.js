@@ -10,6 +10,9 @@ const wss = new WebSocket.Server({ server });
 // Serve your static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/healthz', (req, res) => {
+  res.send('OK');
+});
 // Your WebSocket logic (paste your user map code here)
 let arrayOfUsers = [];
 let M = new Map(); 
@@ -142,3 +145,4 @@ const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
     console.log(`WebSocket server running on port ${PORT}`);
 });
+
